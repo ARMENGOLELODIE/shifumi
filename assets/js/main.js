@@ -1,102 +1,102 @@
 // VARIABLE ET REGLE DE JEU
-$("#play").click(play);
-const buttons = document.querySelectorAll("button");
-const username = prompt("Veuillez indiquer votre nom d'utilisateur...");
 
 $(function(){ 
-    var playerChoice = '';
-    var scorePlayer  =  0 ;
-    var scoreIA  =  0 ;
-    var games = 0;
-    var pts = 0;
     
-    $(".imageCat").mousedown(function(){
-        playerChoice = this.id;
-        console.log('mousedown : '+ playerChoice);
+    $("#play").click(function(){
+        const buttons = document.querySelectorAll("button");
+        const username = prompt("Veuillez indiquer votre nom d'utilisateur...");
 
-    });
-
-    alert("Règles du jeu SHI FU MI. シフミゲームのルール \n PIERRE gagne contre CISEAUX mais perd contre FEUILLE. \n FEUILLE gagne contre PIERRE mais perd contre CISEAUX. \n CISEAUX gagne contre FEUILLE mais perd contre pierre. BONNE CHANCE ! がんばろう !");
-    
-
-                $(".imageCat").draggable({revert:true});
-                $(".imageCat").draggable({revertDuration : 1500});
-
-                $(".playerOne").droppable({
-
-                drop:function(event, ui) {
-                   // $(this).css('' , '');
-                                        
-                    game(playerChoice);
-                },
-                over:function(event, ui) {
-                    $(this).css('' , '');
-                },
-                out:function(event, ui) {
-                    $(this).css('' , '');
-                }     
-             });
+        var playerChoice = '';
+        var scorePlayer  =  0 ;
+        var scoreIA  =  0 ;
+        var games = 0;
+        var pts = 0;
 
 
 // GAMES
-     $(function game(playerChoice){ 
+     function game(playerChoice){ 
         games++;
      
-     console.log('Joueur : '+ playerChoice);
+         console.log('Joueur : '+ playerChoice);
    
-    var IA= Math.random();
-    
-    if(IA <= 0.33){
-        IA = "pierre";
-    }
-    else if(IA <= 0.66){
-        IA = "feuille";
-    }
-    else{
-        IA = "ciseaux";
-    };
-
-    console.log('Ordinateur :  '+ IA );
-   
-     if((IA === "pierre" && playerChoice === "ciseaux") || (IA === "feuille" && playerChoice=== "pierre") || (IA === "ciseaux" && playerChoice === "feuille")) {
-        var sentenceWin = "Tu as perdu";
-        scoreIA  =  scoreIA  + 1 ;
+        var IA= Math.random();
         
+        if(IA <= 0.33){
+            IA = "pierre";
+        }
+        else if(IA <= 0.66){
+            IA = "feuille";
+        }
+        else{
+            IA = "ciseaux";
+        };
+
+        console.log('Ordinateur :  '+ IA );
+    
+        if((IA === "pierre" && playerChoice === "ciseaux") || (IA === "feuille" && playerChoice=== "pierre") || (IA === "ciseaux" && playerChoice === "feuille")) {
+            var sentenceWin = "Tu as perdu";
+            scoreIA  =  scoreIA  + 1 ;
+            
+        }
+        
+        
+        else if((playerChoice === "pierre" && IA === "ciseaux") || (playerChoice === "feuille" && IA === "pierre") || (playerChoice === "ciseaux" && IA === "feuille"))
+        {
+            var sentenceWin = "C'est toi qui à gagné, bravo !";
+            scorePlayer  =  scorePlayer   + 1 ;
+        
+        } 
+        
+        else 
+        {
+            var sentenceWin = "Match nul pour cette manche"
+        };
+
+
+        //  Resultat
+        var purcent = ((scorePlayer  / games) * 100) ;
+        console.log('pourcentage: '+ purcent);
+    
+        alert(sentenceWin + "\nLe chat japonais à joué " + IA ) ;
+
+        $("#score").html(scorePlayer +' - '+ scoreIA);
+            pts = pts+1
+
+            $("#count").html(games);
+            pts = pts+1 ;
+
+        $("#purcent").html(Math.round(purcent));
     }
-       
+
+        
+
+        alert("Règles du jeu SHI FU MI. シフミゲームのルール \n PIERRE gagne contre CISEAUX mais perd contre FEUILLE. \n FEUILLE gagne contre PIERRE mais perd contre CISEAUX. \n CISEAUX gagne contre FEUILLE mais perd contre pierre. BONNE CHANCE ! がんばろう !");
     
-    else if((playerChoice === "pierre" && IA === "ciseaux") || (playerChoice === "feuille" && IA === "pierre") || (playerChoice === "ciseaux" && IA === "feuille"))
-    {
-        var sentenceWin = "C'est toi qui à gagné, bravo !";
-        playerScore  =  playerScore  + 1 ;
-       
-    } 
-    
-    else 
-    {
-        var sentenceWin = "Match nul pour cette manche"
-    };
 
 
-    //  Resultat
-    var purcent = ((scorePlayer  / games) * 100) ;
-    console.log('pourcentage: '+ purcent);
-   
-    alert(sentenceWin + "\nLe chat japonais à joué " + IA ) ;
+        $(".imageCat").draggable({revert:true});
+        $(".imageCat").draggable({revertDuration : 1500});
 
-    $("#score").html(scorePlayer +' - '+ scoreIA);
-        pts = pts+1
+        $("#playerOne").droppable({
+            drop:function(event, ui) {
+                                    
+                console.log('mousedown : '+ playerChoice);
+                game(playerChoice);
+            } 
+        });
 
-        $("#count").html(games);
-        pts = pts+1 ;
+        $(".imageCat").mousedown(function(){
+            playerChoice = this.id;
+            console.log('mousedown : '+ playerChoice);
 
-     $("#purcent").html(Math.round(purcent));
-    
+        });
+
 
    });
    
   
-});
 
+
+});
 
 

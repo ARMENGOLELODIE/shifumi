@@ -1,6 +1,6 @@
 main {
   
-        background-image: url(../images/chat.png) fixed; ;
+        background: url(../images/shifumi.jpg)  no-repeat;
         -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -13,16 +13,14 @@ main {
 }
 
 .titleOne {
- font-family: 
- 'Rochester', cursive;;
+ font-family:  'Rochester', cursive;
 
  }
  .footerino{
  border-radius:  55px;
  }
  .styleText {
-    font-family: 
- 'Rochester', cursive;
+    font-family: 'Rochester', cursive;
  font-size: 1.5rem;
  }
  /*karine*/
