@@ -21,10 +21,18 @@ $(function(){
 
 
 
+    function endgame() {
+        alert("end game");
+    }
 
 // GAMES
      function game(playerChoice){ 
         games++;
+
+        if (games >= 5) {
+            endGame();
+            return;
+        }
      
          console.log('Joueur : '+ playerChoice);
    
