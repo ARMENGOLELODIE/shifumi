@@ -1,10 +1,15 @@
 // VARIABLE ET REGLE DE JEU
 
 $(function(){ 
+
+    $('#imageChoice').hide();
     
-    $("#play").click(function(){
+    $("#play").click(function(){  
         const buttons = document.querySelectorAll("button");
         const username = prompt("Veuillez indiquer votre nom d'utilisateur...");
+
+        $('#imageChoice').show();
+        $("#play").hide();
 
         var playerChoice = '';
         var scorePlayer  =  0 ;
@@ -34,7 +39,7 @@ $(function(){
         console.log('Ordinateur :  '+ IA );
     
         if((IA === "pierre" && playerChoice === "ciseaux") || (IA === "feuille" && playerChoice=== "pierre") || (IA === "ciseaux" && playerChoice === "feuille")) {
-            var sentenceWin = "Tu as perdu";
+            var sentenceWin = "Tu as perdu ! 失われた !";
             scoreIA  =  scoreIA  + 1 ;
             
         }
@@ -42,7 +47,7 @@ $(function(){
         
         else if((playerChoice === "pierre" && IA === "ciseaux") || (playerChoice === "feuille" && IA === "pierre") || (playerChoice === "ciseaux" && IA === "feuille"))
         {
-            var sentenceWin = "C'est toi qui à gagné, bravo !";
+            var sentenceWin = "Tu as Gagné à gagné ! bravo !よくやった!" + ('assets/images/win.jpg');
             scorePlayer  =  scorePlayer   + 1 ;
         
         } 
@@ -57,7 +62,7 @@ $(function(){
         var purcent = ((scorePlayer  / games) * 100) ;
         console.log('pourcentage: '+ purcent);
     
-        alert(sentenceWin + "\nLe chat japonais à joué " + IA ) ;
+        alert(sentenceWin + "\nManeki Neko  à joué " + IA ) ;
 
         $("#score").html(scorePlayer +' - '+ scoreIA);
             pts = pts+1
