@@ -1,7 +1,8 @@
 // VARIABLE ET REGLE DE JEU
 
 $(function(){ 
-
+// cacher la div av .hide 
+// je cree uen div html av image qu eje veux et quand je gagne je la fais re aparaotre
     $('#imageChoice').hide();
     
     $("#play").click(function(){  
@@ -16,6 +17,9 @@ $(function(){
         var scoreIA  =  0 ;
         var games = 0;
         var pts = 0;
+        var partieJouable = undefined;
+
+
 
 
 // GAMES
@@ -41,22 +45,28 @@ $(function(){
         if((IA === "pierre" && playerChoice === "ciseaux") || (IA === "feuille" && playerChoice=== "pierre") || (IA === "ciseaux" && playerChoice === "feuille")) {
             var sentenceWin = "Tu as perdu ! 失われた !";
             scoreIA  =  scoreIA  + 1 ;
+         
             
         }
         
         
         else if((playerChoice === "pierre" && IA === "ciseaux") || (playerChoice === "feuille" && IA === "pierre") || (playerChoice === "ciseaux" && IA === "feuille"))
         {
-            var sentenceWin = "Tu as Gagné à gagné ! bravo !よくやった!" + ('assets/images/win.jpg');
+            var sentenceWin = "Tu as Gagné à gagné ! bravo !よくやった!";
             scorePlayer  =  scorePlayer   + 1 ;
-        
+           
         } 
         
         else 
         {
-            var sentenceWin = "Match nul pour cette manche"
+            var sentenceWin = "Match nul pour cette manche";
+         
         };
 
+    
+            
+           
+        //rajouter une div ici .show
 
         //  Resultat
         var purcent = ((scorePlayer  / games) * 100) ;
@@ -73,7 +83,7 @@ $(function(){
         $("#purcent").html(Math.round(purcent));
     }
 
-        
+   
 
         alert("Règles du jeu SHI FU MI. シフミゲームのルール \n PIERRE gagne contre CISEAUX mais perd contre FEUILLE. \n FEUILLE gagne contre PIERRE mais perd contre CISEAUX. \n CISEAUX gagne contre FEUILLE mais perd contre pierre. BONNE CHANCE ! がんばろう !");
     
