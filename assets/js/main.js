@@ -30,6 +30,7 @@ $(function(){
         games++;
 
         if (games >= 5) {
+            alert("Vous avez terminez bravoo reactualisez pour relancez votre game sayonara ;(")
             endGame();
             return;
         }
